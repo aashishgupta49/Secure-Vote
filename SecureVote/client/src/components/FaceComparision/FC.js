@@ -55,6 +55,7 @@ function FC() {
                 <ClipLoader
                   loading={loading}
                   size={150}
+                  color={"white"}
                   aria-label="Loading Spinner"
                   data-testid="loader"
                 />
