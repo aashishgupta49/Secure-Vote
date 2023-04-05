@@ -22,53 +22,39 @@ import Particle2 from '../Particle2';
 
 
 function Voter() {
-    const [image, setImage] = useState();
-    let base64code = " ";
+    const [image, setImage] = useState(null);
+    const [image1, setImage1] = useState(null);
+    const [image2, setImage2] = useState(null);
 
-    const onChange = (e) => {
-        const files = e.target.files
-        const file = files[0];
-        setImage(e.target.files[0]);
 
-        getbase64(file)
-    }
 
-    const onLoad = (fileString) => {
-        base64code = fileString
-        console.log(fileString)
-    }
 
-    const getbase64 = (file) => {
-        let reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onload = () => {
-            onLoad(reader.result);
-        }
-    }
 
-    const [back, setBack] = useState();
-    let base64codeBack = " ";
 
-    const onChangeBack = (event) => {
-        const files = event.target.file
-        const file = files[0];
-        setBack(event.target.files[0]);
 
-        getbase64(file)
-    }
+    const handleImage1Change = e => {
+        setImage1(e.target.files[0]);
+      };
+    
+      const handleImage2Change = e => {
+        setImage2(e.target.files[0]);
+      };
+    
+      const handleUpload1 = () => {
+        console.log("Uploading Image 1...");
+        // Code to upload Image 1 goes here
+      };
+    
+      const handleUpload2 = () => {
+        console.log("Uploading Image 2...");
+        // Code to upload Image 2 goes here
+      };
 
-    const onLoadBack = (fileString) => {
-        base64codeBack = fileString
-        console.log(fileString)
-    }
 
-    const getbase64Back = (file) => {
-        let reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onload = () => {
-            onLoad(reader.result);
-        }
-    }
+
+
+
+
     return (
 
         <IconContext.Provider value={{ color: '#a9b3c1', size: '1rem' }}>
@@ -84,17 +70,16 @@ function Voter() {
                             <FaceCardInfo>
                                 <div className='divv'>
                                     <FaceCardCost>FRONT</FaceCardCost>
+                                                                       
+                                    <div>
+                                        <h2>Upload Image 1</h2>
+                                        <input type="file" onChange={handleImage1Change} />
+                                        <button onClick={handleUpload1}>Upload</button>
+                                        {image1 && <img src={URL.createObjectURL(image1)} alt="Image 1" style={{ maxWidth: "300px", maxHeight: "300px" }} />}
+                                    </div>
 
-                                    <input type="file" id='file' onChange={onChange} />
-                                    <label htmlFor='file' className='front'>
-                                        <img
-                                            src={UploadImg} className="upload" id="change" />
-                                    </label>
-                                    {image && (
-                                        <img className='uploaded'
-                                            src={URL.createObjectURL(image)} />
-                                    )}
                                 </div>
+                                
                             </FaceCardInfo>
                         </FaceCard>
                         {/* back */}
@@ -103,27 +88,40 @@ function Voter() {
                                 <div className='divv'>
                                     <FaceCardCost>BACK</FaceCardCost>
 
-                                    <input type="file" id='file' onChange={onChangeBack} />
-                                    <label htmlFor='file' className='back'>
-                                        <img
-                                            src={UploadImg} className="upload" id="change" />
-                                    </label>
-                                    {back && (
-                                        <img className='uploaded'
-                                            src={URL.createObjectURL(back)} />
-                                    )}
+                                    <div>
+                                        <h2>Upload Image 2</h2>
+                                        <input type="file" onChange={handleImage2Change} />
+                                        <button onClick={handleUpload2}>Upload</button>
+                                        {image2 && <img src={URL.createObjectURL(image2)} alt="Image 2" style={{ maxWidth: "300px", maxHeight: "300px" }} />}
+                                    </div>
                                 </div>
                             </FaceCardInfo>
                         </FaceCard>
                     </FaceContainer>
                     <br />
-                    <br />
-                    <br /> <br /> <br /> <br /><br /><br /><br />
-                    <br />
-                    <br />
-                    <br />
 
-                </FaceWrapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <br />
+                    <br /> <br /> <br />
+                     
 
                 <Link to="/adhar">
 
@@ -139,9 +137,7 @@ function Voter() {
                                         
                 </div>
                 </Link> 
-
-
-
+                </FaceWrapper>
 
 
             </FaceSection>
@@ -152,3 +148,40 @@ function Voter() {
     );
 }
 export default Voter;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
