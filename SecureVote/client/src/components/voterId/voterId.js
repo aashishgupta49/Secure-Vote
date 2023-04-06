@@ -6,7 +6,7 @@ import './voterId.css';
 
 
 import { Link } from 'react-router-dom';
-import UploadImg from './Untitled.jpeg';
+// import UploadImg from './Untitled.jpeg';
 
 import {
     FaceSection,
