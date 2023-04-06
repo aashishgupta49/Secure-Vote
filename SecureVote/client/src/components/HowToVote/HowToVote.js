@@ -23,6 +23,17 @@ const HowToVote = () => {
     hidden: { y: 30, opacity: 0 },
     animate: { y: 0, opacity: 1, transition: { delay: 0.2, duration: 0.4 } },
   };
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [checked, setChecked] = useState(false);
+ 
+  const dataSubmit= () => {
+    return checked ? setIsDisabled(true) : setIsDisabled(false);
+  };
+ 
+  const onCheckboxClick = () => {
+    setChecked(!checked);
+    return dataSubmit();
+  };
 
   return (
     <FormSection method="POST">
@@ -71,9 +82,10 @@ const HowToVote = () => {
                   <br />
                 </ul>
               </p>
-
+              <input type="checkbox" onClick={onCheckboxClick} />
+              <label>  I confirm that I have read and understood the information provided.</label>
               <Link to="/voterId">
-                <FormButton >Next</FormButton>
+                <FormButton type="submit" disabled={isDisabled} >Next</FormButton>
               </Link>
             </FormWrapper>
             {error && (
